@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+	<link href="{{ url_for('static', filename='css/nav_bar_style.css') }}" rel="stylesheet">
+    <title>Word Lists</title>
+  </head>
+
+  <body>
+	<!-- Navigation-->
+	<nav class="navbar">
+        <ul>
+		  <li><a href="/">Home</a></li>
+		  <li class="dropdown">
+			<a href="/word_lists" class="dropbtn">Word Lists</a>
+			<div class="dropdown-content">
+			{% for word_list in word_lists %}
+			  <a href="/word_lists/{{ word_list }}">{{ word_list }}</a>
+			{% endfor %}
+			</div>
+		  </li>
+		  <li><a href="/anagrams">Anagram Trainer</a></li>
+		</ul>
+    </nav>
+	
+	<!--Main-->
+    <h1>Word list</h1>
+    {% for word_list in word_lists %}
+      <a href="/word_lists/{{ word_list }}"><button class="link-button">{{ word_list }}</button></a><br><br>
+    {% endfor %}
+  </body>
+</html>

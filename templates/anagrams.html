@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/nav_bar_style.css') }}" rel="stylesheet">
+	<script src="{{ url_for('static', filename='js/anagrams.js') }}" defer></script>
+    <script type="text/javascript" defer>
+      let answers = {{ answers|tojson }};
+	  window.onload = function() {
+            initQuiz(answers);
+        };
+    </script>
+    <title>Anagrams</title>
+  </head>
+
+  <body>
+	<!-- Navigation-->
+	<nav class="navbar">
+        <ul>
+		  <li><a href="/">Home</a></li>
+		  <li class="dropdown">
+			<a href="/word_lists" class="dropbtn">Word Lists</a>
+			<div class="dropdown-content">
+			{% for word_list in word_lists %}
+			  <a href="/word_lists/{{ word_list }}">{{ word_list }}</a>
+			{% endfor %}
+			</div>
+		  </li>
+		  <li><a href="/anagrams">Anagram Trainer</a></li>
+		</ul>
+    </nav>
+	
+	<!--Main-->
+    <h1>Anagram trainer</h1>
+	
+	<h2>Possible Words</h2>
+	<table id="answersTable" border="3">
+        <!-- Answers will be revealed here in a table format -->
+    </table> <br> <br>
+	
+	<h2>Rack:</h2>
+    <table id="rack">
+	<tr>
+		{% for letter in rack %}
+			<td style="background-color: #14089e; color: white;">
+				<div class="tile">
+					<b>&nbsp;{{ letter}}&nbsp;</b>
+				</div>
+			</td>
+		{% endfor %}
+	<tr>
+	</table><br>
+	
+    <input id="guessInput" maxlength="15" minlength="2" type="text"><br><br>
+    <button id="submitBtn" class="input-button">Submit</button>
+	<button id="revealAnswers" class="input-button">Reveal Answers</button>
+	<p id="message"></p> <br>
+	<form method="POST">
+		<input type="submit" class="input-button" value="generate rack">
+	</form><br>
+	
+	<hr>
+	
+	<h2>Instructions</h2>
+	<p>1. Type a word that you think can be formed from the rack, then press "submit" (or enter).</p>
+	<p>2. If your answer is correct, it will appear on the table in green</p>
+	<p>3. When you do not have any other guesses, you can use the "reveal answers" button to reveal all remaining answers.</p>
+	<p>4. You can generate a new rack with the "generate rack" to generate a new rack.</p>
+  </body>
+</html>

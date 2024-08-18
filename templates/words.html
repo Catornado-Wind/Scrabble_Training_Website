@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+	<link href="{{ url_for('static', filename='css/nav_bar_style.css') }}" rel="stylesheet">
+	<link href="{{ url_for('static', filename='css/flashcard_style.css') }}" rel="stylesheet">
+    
+    <script type="text/javascript">
+        let words = {{ words|tojson }};
+    </script>
+    <script src="{{ url_for('static', filename='js/flashcard.js') }}" defer></script>
+    
+    <title>Anagrams</title>
+  </head>
+
+  <body>
+	<!-- Navigation-->
+	<nav class="navbar">
+        <ul>
+		  <li><a href="/">Home</a></li>
+		  <li class="dropdown">
+			<a href="/word_lists" class="dropbtn">Word Lists</a>
+			<div class="dropdown-content">
+			{% for word_list in word_lists %}
+			  <a href="/word_lists/{{ word_list }}">{{ word_list }}</a>
+			{% endfor %}
+			</div>
+		  </li>
+		  <li><a href="/anagrams">Anagram Trainer</a></li>
+		</ul>
+    </nav>
+	
+	<!--Main-->
+    <h1>Word Flashcards</h1>
+	<h2>{{ word_list }}</h2>
+    
+    <section id="flashcards-display">
+	
+      <div class="word-card">
+        <b><p id="word-display" style="font-size: 30px;">[word]</p></b>
+        <p>Word</p>
+        <hr>
+        <b><p id="anagram-display" style="font-size: 30px;">[anagram]</p></b>
+        <p>Anagram</p>
+      </div><br>
+
+      <button id="prev-word" class="cycle-words"><</button>
+	  <span id="progress-display" style="font-size: 25px;">&nbsp; [index] / [total] &nbsp;</span>
+	  <button id="next-word" class="cycle-words">></button>
+    </section>
+    
+  </body>
+</html>

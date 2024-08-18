@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+	<link href="{{ url_for('static', filename='css/nav_bar_style.css') }}" rel="stylesheet">
+    <title>Home</title>
+  </head>
+
+  <body>
+  <!-- Navigation-->
+	<nav class="navbar">
+        <ul>
+		  <li><a href="/">Home</a></li>
+		  <li>
+			<a href="/word_lists" class="dropbtn">Word Lists</a>
+			<div class="dropdown-content">
+			{% for word_list in word_lists %}
+			  <a href="/word_lists/{{ word_list }}">{{ word_list }}</a>
+			{% endfor %}
+			</div>
+		  </li>
+		  <li><a href="/anagrams">Anagram Trainer</a></li>
+		</ul>
+    </nav>
+	
+	<!--Main-->
+    <h1>Scrabble Trainer</h1>
+	<h2>About</h2>
+	<p style="text-align: center;">Scrabble is a very challenging game, needing a variety of skill sets such as:</p>
+	
+	<h3>- Vocabulary Knowledge</h3>
+	<p style="text-align: center;">Players need a broad and deep vocabulary to form high-scoring bingos and words. This is especially true for 2-letter and 3-letter words as the give out potential for overlap plays and score high points</p>
+		
+	<h3>- Strategic Play</h3>
+	<p style="text-align: center;">It's crucial to maximize points while minimizing opportunities for opponents.</p>
+		
+	<h3>- Board Awareness</h3>
+	<p style="text-align: center;">Effective placement of words to utilize premium squares (double/triple word/letter scores) can significantly impact the game. You also have to be aware of the words on the board and in endgame, your opponent's rack in order to block your opponent's best plays.</p>
+		
+	<h3>- Anagramming</h3>
+	<p style="text-align: center;">Quickly identifying potential word combinations from scrambled letters is essential.</p>
+	
+	<p style="text-align: center;">
+	Our website provides resources such as variety of flashcards for multiple word lists which will be useful for certain situations such as shedding vowels an "Q"s and also an anagram trainer where you aim to find as many words as possible in a given rack. You can find them in the buttons below.
+	</p><br>
+	
+	<hr><br>
+	
+    <a href="/word_lists"><button class="link-button">Word Lists</button></a><br><br>
+    <a href="/anagrams"><button class="link-button">Anagram Trainer</button></a>
+  </body>
+</html>
