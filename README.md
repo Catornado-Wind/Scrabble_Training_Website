@@ -17,10 +17,11 @@ It was built using python's Flask module connected to an sql database of words e
 3. To get the word list in the first place, I have to go the Collin's Dictionary website, download the software for it, extract the word list as pdf (due to being the most convenient option) convert it to a word document and then  write code to convert it to a text file where I can finally convert it to a database file.
 
 # Acomplishments that I am proud of
-
+I am proud that I manage to make a website from scratch and deploy it. I also am proud that I am able to find creative ways to overcome obstacles and get a working result. It may not have been what I aimed for initially, but I am proud nevertheless.
 
 # What I learned
-
+1. I learnt some basic javascript.
+2. I learnt some problem solving skills to overcome the many obstacles I faced.
 
 # What is next for the Scrabble Training Website 
 I would include more fetures such as: 
